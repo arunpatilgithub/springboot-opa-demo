@@ -1,0 +1,18 @@
+logging:
+  level:
+    root: ERROR
+    org.springframework.boot.web.embedded.netty.NettyWebServer: INFO
+    com.ap.springopa.demo.springbootopademo: ERROR
+
+spring:
+  application:
+    name: springboot-opa-demo
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://${DOMAIN}/
+
+
+auth0:
+  audience: springboot-auto0-opa-demo
