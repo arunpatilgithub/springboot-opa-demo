@@ -1,3 +1,4 @@
+
 logging:
   level:
     root: ERROR
@@ -15,4 +16,7 @@ spring:
 
 
 auth0:
-  audience: springboot-auto0-opa-demo
+  audience: https://springboot-auth0-opa-demo
+
+server:
+  port: 9092

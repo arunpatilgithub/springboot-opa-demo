@@ -3,6 +3,7 @@ package com.ap.springopa.demo.springbootopademo.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.oauth2.core.DelegatingOAuth2TokenValidator;
@@ -32,8 +33,8 @@ public class SecurityConfig {
 
         http.authorizeExchange((exchanges) ->
                                        exchanges
-                                               .pathMatchers("/greeting/**")
-                                               .hasAuthority("SCOPE_read:helloworld")
+                                               .pathMatchers(HttpMethod.GET,"/greeting/**").hasAuthority("SCOPE_read:greeting")
+                                               .pathMatchers(HttpMethod.PUT, "/update-greeting/**").hasAuthority("SCOPE_write:greeting")
                                                .anyExchange().authenticated()
                               ).oauth2ResourceServer(oauth2 -> oauth2
                                                              .jwt(withDefaults())
